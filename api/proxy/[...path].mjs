@@ -57,6 +57,7 @@ function getTargetUrlFromPath(encodedPath) {
         return null;
     }
     try {
+        console.log(encodedPath,'222')
         const decodedUrl = decodeURIComponent(encodedPath);
         // 基础检查，看是否像一个 HTTP/HTTPS URL
         if (decodedUrl.match(/^https?:\/\/.+/i)) {

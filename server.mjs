@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url';
 import fs from 'fs';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
+// 创建子路由
+const libretvRouter = express.Router();
 
 dotenv.config();
 
@@ -67,7 +69,7 @@ async function renderPage(filePath, password) {
   return content;
 }
 
-app.get(['/', '/index.html', '/player.html'], async (req, res) => {
+libretvRouter.get(['/', '/index.html', '/player.html'], async (req, res) => {
   try {
     let filePath;
     switch (req.path) {
@@ -87,7 +89,7 @@ app.get(['/', '/index.html', '/player.html'], async (req, res) => {
   }
 });
 
-app.get('/s=:keyword', async (req, res) => {
+libretvRouter.get('/s=:keyword', async (req, res) => {
   try {
     const filePath = path.join(__dirname, 'index.html');
     const content = await renderPage(filePath, config.password);
@@ -123,11 +125,11 @@ function isValidUrl(urlString) {
 }
 
 // 代理路由
-app.get('/proxy/:encodedUrl', async (req, res) => {
+libretvRouter.get('/proxy/:encodedUrl', async (req, res) => {
   try {
     const encodedUrl = req.params.encodedUrl;
     const targetUrl = decodeURIComponent(encodedUrl);
-
+    
     // 安全验证
     if (!isValidUrl(targetUrl)) {
       return res.status(400).send('无效的 URL');
@@ -185,9 +187,11 @@ app.get('/proxy/:encodedUrl', async (req, res) => {
   }
 });
 
-app.use(express.static(path.join(__dirname), {
+libretvRouter.use(express.static(path.join(__dirname), {
   maxAge: config.cacheMaxAge
 }));
+// 将子路由挂载到 /LibreTV 路径
+app.use('/LibreTV', libretvRouter);
 
 app.use((err, req, res, next) => {
   console.error('服务器错误:', err);
