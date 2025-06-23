@@ -2,6 +2,7 @@
 const PROXY_URL = '/LibreTV/proxy/';    // 适用于 Cloudflare, Netlify (带重写), Vercel (带重写)
 
 // const PROXY_URL = '/proxy/'; 
+
 // const HOPLAYER_URL = 'https://hoplayer.com/index.html';
 const SEARCH_HISTORY_KEY = 'videoSearchHistory';
 const MAX_HISTORY_ITEMS = 5;
