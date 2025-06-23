@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // 检查页面路径中的搜索参数 (格式: /s=keyword)
-    const path = window.location.pathname +'/LibreTV/';
+    const path = window.location.pathname  ;
     const searchPrefix = '/s=';
     
     if (path.startsWith(searchPrefix)) {
