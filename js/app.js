@@ -597,7 +597,7 @@ function resetSearchArea() {
         window.history.pushState(
             {},
             `LibreTV - 免费在线视频搜索与观看平台`,
-            `/`
+            `/LibreTV/`
         );
         // 更新页面标题
         document.title = `LibreTV - 免费在线视频搜索与观看平台`;
