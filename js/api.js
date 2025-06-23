@@ -551,6 +551,7 @@ async function handleMultipleCustomSearch(searchQuery, customApiUrls) {
         const requestUrl = typeof input === 'string' ? new URL(input, window.location.origin) : input.url;
         
         if (requestUrl.pathname.startsWith('/LibreTV/api/')) {
+            console.log('ssssss')
             if (window.isPasswordProtected && window.isPasswordVerified) {
                 if (window.isPasswordProtected() && !window.isPasswordVerified()) {
                     return;
