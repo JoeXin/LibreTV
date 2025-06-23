@@ -128,7 +128,7 @@ function isValidUrl(urlString) {
 app.get('/LibreTV/proxy/:encodedUrl', async (req, res) => {
   try {
     console.log(req.params.encodedUrl,'这是请求的地址')
-    const encodedUrl = req.params.encodedUrl;
+    const encodedUrl = req.params.encodedUrl.split('/LibreTV')[1];
     const targetUrl = decodeURIComponent(encodedUrl);
     
     // 安全验证
