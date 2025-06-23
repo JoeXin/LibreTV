@@ -123,7 +123,7 @@ function isValidUrl(urlString) {
 }
 
 // 代理路由
-app.get('/LibreTV/proxy/:encodedUrl', async (req, res) => {
+app.get('/proxy/:encodedUrl', async (req, res) => {
   try {
     const encodedUrl = req.params.encodedUrl;
     const targetUrl = decodeURIComponent(encodedUrl);
