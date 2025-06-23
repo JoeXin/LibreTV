@@ -30,7 +30,7 @@ async function fetchVersion(url, errorMessage, options = {}) {
 async function checkForUpdates() {
     try {
         // 获取当前版本
-        const currentVersion = await fetchVersion('/VERSION.txt', '获取当前版本失败', {
+        const currentVersion = await fetchVersion('/LibreTV/VERSION.txt', '获取当前版本失败', {
             cache: 'no-store'
         });
         
