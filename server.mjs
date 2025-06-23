@@ -127,7 +127,7 @@ function isValidUrl(urlString) {
 // 代理路由
 app.get('/LibreTV/proxy/:encodedUrl', async (req, res) => {
   try {
-    console.log(req.params.encodedUrl,'这是请求的地址')
+    console.log(req.params,'这是请求的地址')
     const encodedUrl = req.params.encodedUrl;
     const targetUrl = decodeURIComponent(encodedUrl);
     
@@ -174,7 +174,7 @@ app.get('/LibreTV/proxy/:encodedUrl', async (req, res) => {
     
     sensitiveHeaders.forEach(header => delete headers[header]);
     res.set(headers);
-
+console.log(res,'reshhh')
     // 管道传输响应流
     response.data.pipe(res);
   } catch (error) {
